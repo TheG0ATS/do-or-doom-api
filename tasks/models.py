@@ -9,7 +9,7 @@ class Task(models.Model):
     )
     description = models.TextField(default="", null=True, blank=True)
     completed = models.BooleanField()
-    due = models.DateField()
+    due = models.DateTimeField()
     created_at = models.DateTimeField(auto_now_add =True)
     # May or may not use:
     updated_at = models.DateTimeField(auto_now = True)
