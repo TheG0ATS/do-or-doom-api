@@ -1,29 +1,21 @@
 from django.apps import AppConfig
-import schedule
-import time
-#from tasks.models import Task
-
-app_ready = False
+from schedule import every, repeat
 
 class TasksConfig(AppConfig):
     name = 'tasks'
-    def ready(self):
-        app_ready=True
 
-
+# @repeat(every(1).second)
 # def check_for_overdue_tasks():
-#     my_data = Task.objects.all().values()
+    #from tasks.models import Task
+    # my_data = Task.objects.all().values()
+    # get all users and tasks from db
+    # for each user, 
+    # for each task, 
+    # if a task's due date is greater than the current date, 
+    # send message via twillo
+    # print(f"Checked for overdue tasks.")
+    #print(my_data)
 
-#     # get all users and tasks from db
-#     # for each user, 
-#     # for each task, 
-#     # if a task's due date is greater than the current date, 
-#     # send message via twillo
-#     print("Checked for overdue tasks.")
-#     print(my_data)
-
-# schedule.every(1).seconds.do(check_for_overdue_tasks)
-
-# while app_ready:
+# while True:
 #     schedule.run_pending()
 #     time.sleep(1)
