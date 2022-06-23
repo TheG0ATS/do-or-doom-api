@@ -24,12 +24,13 @@ class TasksTest(APITestCase):
         )
         test_task.save()
 
+    # failing
     def test_task_model(self):
         task = Task.objects.get(id=1)
         actual_owner = str(task.owner)
         actual_title = str(task.title)
         actual_description = str(task.description)
-        self.assertEqual(actual_owner, "testuser1")
+        self.assertEqual(actual_owner, "test1")
         self.assertEqual(actual_title, "Test Task")
         self.assertEqual(actual_description, "Tests are happening")
 
@@ -49,6 +50,7 @@ class TasksTest(APITestCase):
         task = response.data
         self.assertEqual(task["title"], "Test Task")
 
+    # failing
     def test_create_task(self):
         url = reverse("task_list")
         data = {"owner": 1, "title": "Another Test", "description": "A second test."}
@@ -58,6 +60,7 @@ class TasksTest(APITestCase):
         self.assertEqual(len(tasks), 2)
         self.assertEqual(Task.objects.get(id=2).title, "Another Test")
 
+    # failing
     def test_update_task(self):
         url = reverse("task_detail", args=(1,))
         data = {
@@ -72,6 +75,7 @@ class TasksTest(APITestCase):
         self.assertEqual(task.owner.id, data["owner"])
         self.assertEqual(task.description, data["description"])
 
+    # failing
     def test_delete_task(self):
         url = reverse("task_detail", args=(1,))
         response = self.client.delete(url)
